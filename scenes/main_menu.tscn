@@ -44,14 +44,5 @@ size_flags_horizontal = 4
 theme = ExtResource("3_74wt4")
 text = "Options"
 
-[node name="CreditsButton" type="Button" parent="Contents/Menu"]
-texture_filter = 1
-custom_minimum_size = Vector2(156, 42)
-layout_mode = 2
-size_flags_horizontal = 4
-theme = ExtResource("3_74wt4")
-text = "Credits"
-
 [connection signal="pressed" from="Contents/Menu/PlayButton" to="." method="_play_game"]
 [connection signal="pressed" from="Contents/Menu/OptionsButton" to="." method="_to_options"]
-[connection signal="pressed" from="Contents/Menu/CreditsButton" to="." method="_to_credits"]

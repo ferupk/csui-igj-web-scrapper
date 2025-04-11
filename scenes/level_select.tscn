@@ -30,14 +30,6 @@ layout_mode = 2
 theme_override_constants/separation = 24
 alignment = 1
 
-[node name="Intro" type="Button" parent="Contents/Selection"]
-texture_filter = 1
-custom_minimum_size = Vector2(128, 64)
-layout_mode = 2
-size_flags_vertical = 0
-theme = ExtResource("3_wxhpo")
-text = "Intro"
-
 [node name="Levels" type="GridContainer" parent="Contents/Selection"]
 layout_mode = 2
 theme_override_constants/h_separation = 12
@@ -46,14 +38,6 @@ columns = 3
 
 [node name="Level1" parent="Contents/Selection/Levels" instance=ExtResource("4_l8isn")]
 layout_mode = 2
-
-[node name="Outro" type="Button" parent="Contents/Selection"]
-texture_filter = 1
-custom_minimum_size = Vector2(128, 64)
-layout_mode = 2
-size_flags_vertical = 0
-theme = ExtResource("3_wxhpo")
-text = "Outro"
 
 [node name="BackButton" type="Button" parent="Contents"]
 texture_filter = 1
