@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://b2ofjkgkyvbpd"]
+
+[ext_resource type="Script" path="res://scripts/packet.gd" id="1_at4dy"]
+[ext_resource type="Texture2D" uid="uid://xc8ofpoxfncq" path="res://assets/sprites/dead_packet.png" id="2_uvwc4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hm0je"]
+size = Vector2(32, 32)
+
+[node name="DeadPacket" type="StaticBody2D"]
+script = ExtResource("1_at4dy")
+dead = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_uvwc4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_hm0je")
+debug_color = Color(6.13667e-07, 0.221585, 0.263812, 0.42)

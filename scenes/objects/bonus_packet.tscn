@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://covkakolu5hmk"]
+
+[ext_resource type="Texture2D" uid="uid://p0y5ut0g6x77" path="res://assets/sprites/bonus_packet.png" id="1_5ac2n"]
+[ext_resource type="Script" path="res://scripts/packet.gd" id="1_noah2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f6413"]
+size = Vector2(32, 32)
+
+[node name="BonusPacket" type="StaticBody2D"]
+script = ExtResource("1_noah2")
+bonus = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_5ac2n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_f6413")
+debug_color = Color(0.67755, 0.55995, 0.214301, 0.42)

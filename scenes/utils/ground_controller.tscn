@@ -1,0 +1,87 @@
+[gd_scene load_steps=7 format=3 uid="uid://ohyd35atdh2g"]
+
+[ext_resource type="Script" path="res://scripts/globals/ground_controller.gd" id="1_6aun7"]
+[ext_resource type="Texture2D" uid="uid://cpfha3grkbj7q" path="res://assets/menu_background.jpg" id="1_ir8rx"]
+
+[sub_resource type="Animation" id="Animation_owgry"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_xh5mx"]
+resource_name = "foreground_out"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_o6wlx"]
+resource_name = "foreground_in"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_b8uvm"]
+_data = {
+"RESET": SubResource("Animation_owgry"),
+"foreground_in": SubResource("Animation_o6wlx"),
+"foreground_out": SubResource("Animation_xh5mx")
+}
+
+[node name="GroundController" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_6aun7")
+
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -128
+
+[node name="TextureRect" type="TextureRect" parent="Background"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_ir8rx")
+
+[node name="Foreground" type="CanvasLayer" parent="."]
+layer = 128
+
+[node name="ColorRect" type="ColorRect" parent="Foreground"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Foreground"]
+libraries = {
+"": SubResource("AnimationLibrary_b8uvm")
+}

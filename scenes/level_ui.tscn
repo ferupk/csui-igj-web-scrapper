@@ -1,0 +1,58 @@
+[gd_scene load_steps=3 format=3 uid="uid://b10exwdxqlh16"]
+
+[ext_resource type="Script" path="res://scripts/level_ui.gd" id="1_sfjjy"]
+[ext_resource type="FontFile" uid="uid://bhb13frq7x54n" path="res://assets/fonts/EuropeanTeletext.ttf" id="2_cleof"]
+
+[node name="LevelUI" type="CanvasLayer"]
+script = ExtResource("1_sfjjy")
+
+[node name="PacketLabel" type="Label" parent="."]
+texture_filter = 1
+offset_left = 16.0
+offset_top = 12.0
+offset_right = 205.0
+offset_bottom = 44.0
+theme_override_fonts/font = ExtResource("2_cleof")
+theme_override_font_sizes/font_size = 36
+text = "Packets"
+
+[node name="PacketCounter" type="Label" parent="."]
+texture_filter = 1
+offset_left = 56.0
+offset_top = 56.0
+offset_right = 182.0
+offset_bottom = 104.0
+theme_override_fonts/font = ExtResource("2_cleof")
+theme_override_font_sizes/font_size = 54
+text = "0"
+horizontal_alignment = 1
+
+[node name="PickupLabel" type="Label" parent="."]
+texture_filter = 1
+offset_left = 947.0
+offset_top = 12.0
+offset_right = 1136.0
+offset_bottom = 44.0
+theme_override_fonts/font = ExtResource("2_cleof")
+theme_override_font_sizes/font_size = 36
+text = "Pickups
+"
+
+[node name="PickupCounter" type="Label" parent="."]
+texture_filter = 1
+offset_left = 984.0
+offset_top = 56.0
+offset_right = 1096.0
+offset_bottom = 104.0
+theme_override_fonts/font = ExtResource("2_cleof")
+theme_override_font_sizes/font_size = 54
+text = "0
+"
+horizontal_alignment = 1
+
+[node name="BonusFlag" type="Label" parent="."]
+visible = false
+offset_top = 48.0
+offset_right = 155.0
+offset_bottom = 71.0
+text = "Bonus Collected: No"

@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://cj7002sqxufld"]
+
+[ext_resource type="Script" path="res://scripts/objective_checkbox.gd" id="1_4cjtm"]
+[ext_resource type="FontFile" uid="uid://bhb13frq7x54n" path="res://assets/fonts/EuropeanTeletext.ttf" id="2_o7op8"]
+
+[node name="ObjectiveCheckbox" type="HBoxContainer"]
+theme_override_constants/separation = 12
+script = ExtResource("1_4cjtm")
+
+[node name="CheckBox" type="CheckBox" parent="."]
+layout_mode = 2
+focus_mode = 0
+disabled = true
+
+[node name="Label" type="Label" parent="."]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_o7op8")
+theme_override_font_sizes/font_size = 24
+text = "Complete the objective"

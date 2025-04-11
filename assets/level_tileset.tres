@@ -1,0 +1,44 @@
+[gd_resource type="TileSet" load_steps=6 format=3 uid="uid://bhqb7acgkevfw"]
+
+[ext_resource type="Texture2D" uid="uid://dmsj4tfml6tt7" path="res://assets/sprites/tileset_circuit.png" id="2_osckq"]
+[ext_resource type="PackedScene" uid="uid://6mubyqa73vtt" path="res://scenes/objects/garbage_collector.tscn" id="3_b5e38"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_d6v0p"]
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_ykvb0"]
+scenes/1/scene = ExtResource("3_b5e38")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_civy7"]
+texture = ExtResource("2_osckq")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+2:0/0 = 0
+5:3/0 = 0
+5:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+6:0/0 = 0
+7:0/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+
+[resource]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 1
+physics_layer_0/physics_material = SubResource("PhysicsMaterial_d6v0p")
+sources/1 = SubResource("TileSetScenesCollectionSource_ykvb0")
+sources/2 = SubResource("TileSetAtlasSource_civy7")

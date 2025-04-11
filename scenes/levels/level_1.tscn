@@ -1,0 +1,132 @@
+[gd_scene load_steps=13 format=4 uid="uid://wmvct2c3l4h7"]
+
+[ext_resource type="Script" path="res://scripts/game_level.gd" id="1_5rxj8"]
+[ext_resource type="Texture2D" uid="uid://rp1hn3ejyeti" path="res://assets/level_background.jpg" id="2_3p6tl"]
+[ext_resource type="TileSet" uid="uid://bhqb7acgkevfw" path="res://assets/level_tileset.tres" id="2_72jfy"]
+[ext_resource type="PackedScene" uid="uid://cpncre4y3l877" path="res://scenes/objects/packet.tscn" id="3_gfbuc"]
+[ext_resource type="PackedScene" uid="uid://b2ofjkgkyvbpd" path="res://scenes/objects/dead_packet.tscn" id="4_w8o6o"]
+[ext_resource type="PackedScene" uid="uid://covkakolu5hmk" path="res://scenes/objects/bonus_packet.tscn" id="5_oesyw"]
+[ext_resource type="PackedScene" uid="uid://bmdgrroks0o7u" path="res://scenes/objects/player.tscn" id="6_slbcd"]
+[ext_resource type="PackedScene" uid="uid://b10exwdxqlh16" path="res://scenes/level_ui.tscn" id="7_eu14b"]
+
+[sub_resource type="Animation" id="Animation_7ipbl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.808865, 1, 0.799018, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_137y8"]
+resource_name = "glow"
+length = 8.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4, 8),
+"transitions": PackedFloat32Array(-2, -2, 1),
+"update": 0,
+"values": [Color(0.486, 0.6, 0.48, 1), Color(5.17887e-05, 0.690116, 0.119139, 1), Color(0.486275, 0.6, 0.478431, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1wgrd"]
+_data = {
+"RESET": SubResource("Animation_7ipbl"),
+"glow": SubResource("Animation_137y8")
+}
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_v03ux"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(40, 300, 0)
+spread = 16.0
+gravity = Vector3(-24, 0, 0)
+scale_min = 4.0
+scale_max = 8.0
+color = Color(0.831373, 1, 0.788235, 0.376471)
+
+[node name="Level1" type="Node2D"]
+script = ExtResource("1_5rxj8")
+packet_count = 3
+pickup_par = 5
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="Background"]
+modulate = Color(0.808865, 1, 0.799018, 1)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -573.0
+offset_top = -285.0
+offset_right = 5427.0
+offset_bottom = 2515.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_3p6tl")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Background/TextureRect"]
+libraries = {
+"": SubResource("AnimationLibrary_1wgrd")
+}
+autoplay = "glow"
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Background"]
+position = Vector2(1134, 100)
+amount = 128
+process_material = SubResource("ParticleProcessMaterial_v03ux")
+lifetime = 12.0
+randomness = 0.25
+visibility_rect = Rect2(-1600, -300, 1600, 600)
+local_coords = true
+draw_order = 0
+trail_enabled = true
+
+[node name="Layout" type="TileMapLayer" parent="."]
+texture_filter = 1
+scale = Vector2(2, 2)
+tile_map_data = PackedByteArray("AAAAAAAAAgAAAAAAAAABAAAAAgABAAAAAAACAAAAAgAGAAAAAAACAP//AgAAAAAAAAADAP//AgABAAAAAAAEAP//AgABAAAAAAAFAP//AgACAAAAAAAFAAAAAgAHAAAAAAAGAAAAAgABAAAAAAAHAAAAAgABAAAAAAAIAAAAAgACAAAAAAAIAAEAAgACAAEAAAAIAAIAAgACAAIAAAAHAAIAAgABAAIAAAAGAAIAAgABAAIAAAAFAAIAAgABAAIAAAAEAAIAAgABAAIAAAAHAAEAAgABAAEAAAAGAAEAAgABAAEAAAAFAAEAAgABAAEAAAAEAAEAAgABAAEAAAAEAAAAAgABAAEAAAADAAAAAgABAAEAAAABAAEAAgABAAIAAAAAAAEAAgABAAIAAAAAAAMAAgADAAAAAAABAAMAAgAAAAAAAAABAAQAAgAAAAIAAAACAAMAAgABAAAAAAACAAQAAgABAAIAAAADAAMAAgACAAAAAAADAAQAAgACAAIAAAADAAEAAgAGAAEAAAADAAIAAgAAAAIAAAACAAEAAgABAAIAAAD//wEAAQAAAAAAAQA=")
+tile_set = ExtResource("2_72jfy")
+
+[node name="Obstacles" type="TileMapLayer" parent="."]
+texture_filter = 1
+scale = Vector2(2, 2)
+tile_map_data = PackedByteArray("AAAGAAEAAgAEAAAAAAAGAAAAAgAEAAAAAAACAAMAAgAEAAAAAAACAAIAAgAFAAMAAAABAAIAAgAFAAMAAAAAAAIAAgAFAAMAAAD//wIAAgAFAAMAAAD+/wIAAgAFAAMAAAD+/wEAAgAFAAMAAAD+/wAAAgAFAAMAAAD//wAAAgAFAAMAAAD/////AgAFAAMAAAAAAP//AgAFAAMAAAABAP//AgAFAAMAAAABAP7/AgAFAAMAAAACAP7/AgAFAAMAAAADAP7/AgAFAAMAAAAEAP7/AgAFAAMAAAAFAP7/AgAFAAMAAAAGAP7/AgAFAAMAAAAGAP//AgAFAAMAAAAHAP//AgAFAAMAAAAIAP//AgAFAAMAAAAJAP//AgAFAAMAAAAJAAAAAgAFAAMAAAAJAAEAAgAFAAMAAAAJAAIAAgAFAAMAAAAJAAMAAgAFAAMAAAAIAAMAAgAFAAMAAAAHAAMAAgAFAAMAAAAGAAMAAgAFAAMAAAAFAAMAAgAFAAMAAAAEAAMAAgAFAAMAAAAEAAQAAgAFAAMAAAAEAAUAAgAFAAMAAAADAAUAAgAFAAMAAAACAAUAAgAFAAMAAAABAAUAAgAFAAMAAAAAAAUAAgAFAAMAAAAAAAQAAgAFAAMAAAD//wQAAgAFAAMAAAD//wMAAgAFAAMAAAA=")
+tile_set = ExtResource("2_72jfy")
+
+[node name="Objects" type="Node2D" parent="."]
+texture_filter = 1
+scale = Vector2(2, 2)
+
+[node name="Packet" parent="Objects" instance=ExtResource("3_gfbuc")]
+position = Vector2(144, 16)
+
+[node name="Packet2" parent="Objects" instance=ExtResource("3_gfbuc")]
+position = Vector2(80, 144)
+
+[node name="Packet3" parent="Objects" instance=ExtResource("3_gfbuc")]
+position = Vector2(272, 48)
+
+[node name="DeadPacket" parent="Objects" instance=ExtResource("4_w8o6o")]
+position = Vector2(208, 80)
+
+[node name="BonusPacket" parent="Objects" instance=ExtResource("5_oesyw")]
+position = Vector2(16, 112)
+
+[node name="Player" parent="." instance=ExtResource("6_slbcd")]
+position = Vector2(96, 96)
+
+[node name="LevelUI" parent="." instance=ExtResource("7_eu14b")]

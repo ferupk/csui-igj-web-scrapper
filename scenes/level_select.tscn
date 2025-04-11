@@ -1,0 +1,66 @@
+[gd_scene load_steps=5 format=3 uid="uid://ggm7aphfoic8"]
+
+[ext_resource type="Script" path="res://scripts/level_select.gd" id="1_6j5ai"]
+[ext_resource type="FontFile" uid="uid://bhb13frq7x54n" path="res://assets/fonts/EuropeanTeletext.ttf" id="2_0a8l5"]
+[ext_resource type="Theme" uid="uid://b0vo6jf1kqs44" path="res://button_font.tres" id="3_wxhpo"]
+[ext_resource type="PackedScene" uid="uid://cj7pmlxc0b041" path="res://scenes/level_button.tscn" id="4_l8isn"]
+
+[node name="LevelSelect" type="CenterContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6j5ai")
+
+[node name="Contents" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 60
+
+[node name="Title" type="Label" parent="Contents"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_0a8l5")
+theme_override_font_sizes/font_size = 72
+text = "Level Select"
+
+[node name="Selection" type="HBoxContainer" parent="Contents"]
+layout_mode = 2
+theme_override_constants/separation = 24
+alignment = 1
+
+[node name="Intro" type="Button" parent="Contents/Selection"]
+texture_filter = 1
+custom_minimum_size = Vector2(128, 64)
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("3_wxhpo")
+text = "Intro"
+
+[node name="Levels" type="GridContainer" parent="Contents/Selection"]
+layout_mode = 2
+theme_override_constants/h_separation = 12
+theme_override_constants/v_separation = 8
+columns = 3
+
+[node name="Level1" parent="Contents/Selection/Levels" instance=ExtResource("4_l8isn")]
+layout_mode = 2
+
+[node name="Outro" type="Button" parent="Contents/Selection"]
+texture_filter = 1
+custom_minimum_size = Vector2(128, 64)
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("3_wxhpo")
+text = "Outro"
+
+[node name="BackButton" type="Button" parent="Contents"]
+texture_filter = 1
+custom_minimum_size = Vector2(256, 54)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("3_wxhpo")
+text = "Back to Menu"
+
+[connection signal="pressed" from="Contents/BackButton" to="." method="_back_to_menu"]

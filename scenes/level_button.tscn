@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://cj7pmlxc0b041"]
+
+[ext_resource type="Theme" uid="uid://voxgkt3xpywb" path="res://level_button.tres" id="1_8qg01"]
+[ext_resource type="Script" path="res://scripts/level_button.gd" id="2_3ug6s"]
+[ext_resource type="AudioStream" uid="uid://mpw3313v6022" path="res://assets/sounds/button_click.wav" id="3_mu4vt"]
+
+[node name="LevelButton" type="Button"]
+custom_minimum_size = Vector2(108, 64)
+size_flags_vertical = 0
+theme = ExtResource("1_8qg01")
+text = "1"
+script = ExtResource("2_3ug6s")
+
+[node name="SFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_mu4vt")
+bus = &"SFX"
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

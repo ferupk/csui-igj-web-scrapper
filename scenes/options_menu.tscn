@@ -1,0 +1,88 @@
+[gd_scene load_steps=6 format=3 uid="uid://b260lfxfu5fo6"]
+
+[ext_resource type="Script" path="res://scripts/options_menu.gd" id="1_ae4r0"]
+[ext_resource type="FontFile" uid="uid://bhb13frq7x54n" path="res://assets/fonts/EuropeanTeletext.ttf" id="2_drrdo"]
+[ext_resource type="PackedScene" uid="uid://bof17q3vqce6p" path="res://scenes/volume_slider.tscn" id="2_udjea"]
+[ext_resource type="Theme" uid="uid://b0vo6jf1kqs44" path="res://button_font.tres" id="4_t7y1u"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yktkd"]
+bg_color = Color(0.0745098, 0.529412, 0, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.129412, 0.392157, 0.0980392, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[node name="OptionsMenu" type="CenterContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ae4r0")
+
+[node name="Contents" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 36
+
+[node name="Title" type="Label" parent="Contents"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_drrdo")
+theme_override_font_sizes/font_size = 72
+text = "Options"
+
+[node name="Options" type="PanelContainer" parent="Contents"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_yktkd")
+
+[node name="Margins" type="MarginContainer" parent="Contents/Options"]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="Items" type="VBoxContainer" parent="Contents/Options/Margins"]
+layout_mode = 2
+theme_override_constants/separation = 36
+
+[node name="MasterSlider" parent="Contents/Options/Margins/Items" instance=ExtResource("2_udjea")]
+layout_mode = 2
+
+[node name="MusicSlider" parent="Contents/Options/Margins/Items" instance=ExtResource("2_udjea")]
+layout_mode = 2
+bus = "Music"
+
+[node name="SFXSlider" parent="Contents/Options/Margins/Items" instance=ExtResource("2_udjea")]
+layout_mode = 2
+bus = "SFX"
+
+[node name="HBoxContainer" type="VBoxContainer" parent="Contents"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 8
+
+[node name="ResetButton" type="Button" parent="Contents/HBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(360, 54)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("4_t7y1u")
+text = "Reset to Defaults"
+
+[node name="BackButton" type="Button" parent="Contents/HBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(256, 54)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("4_t7y1u")
+text = "Back to Menu"
+
+[connection signal="pressed" from="Contents/HBoxContainer/ResetButton" to="." method="_reset_to_defaults"]
+[connection signal="pressed" from="Contents/HBoxContainer/BackButton" to="." method="_back_to_menu"]

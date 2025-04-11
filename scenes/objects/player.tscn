@@ -1,0 +1,62 @@
+[gd_scene load_steps=8 format=3 uid="uid://bmdgrroks0o7u"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_8pxfo"]
+[ext_resource type="Texture2D" uid="uid://ca686bp5rpt03" path="res://assets/sprites/player.png" id="2_256lm"]
+[ext_resource type="Texture2D" uid="uid://xyuvxmx7e24k" path="res://assets/sprites/pointer.png" id="3_6k31o"]
+[ext_resource type="FontFile" uid="uid://c6y7yr0tcuplh" path="res://assets/fonts/Rodin-Pro-DB.otf" id="4_yfanw"]
+[ext_resource type="AudioStream" uid="uid://crefmbnmubajg" path="res://assets/sounds/pick_up.wav" id="5_h71c6"]
+[ext_resource type="AudioStream" uid="uid://b0eedficcbc3t" path="res://assets/sounds/drop.ogg" id="6_52kib"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dpjqc"]
+size = Vector2(42, 42)
+
+[node name="Player" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_8pxfo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_dpjqc")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_256lm")
+
+[node name="HeldItem" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(18, 8)
+rotation = 0.0959931
+scale = Vector2(1.5, 1.5)
+
+[node name="DirectionGuide" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, 32)
+texture = ExtResource("3_6k31o")
+
+[node name="Counter" type="Label" parent="."]
+offset_left = -20.0
+offset_top = -47.0
+offset_right = 20.0
+offset_bottom = -24.0
+theme_override_fonts/font = ExtResource("4_yfanw")
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(0, 64)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.778, 1.778)
+position_smoothing_enabled = true
+position_smoothing_speed = 4.8
+
+[node name="SFX" type="Node2D" parent="."]
+
+[node name="PickUp" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("5_h71c6")
+bus = &"SFX"
+
+[node name="Drop" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("6_52kib")
+bus = &"SFX"

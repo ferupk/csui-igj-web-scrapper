@@ -1,0 +1,57 @@
+[gd_scene load_steps=4 format=3 uid="uid://c1h65i5gurx1i"]
+
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_e2m2n"]
+[ext_resource type="Texture2D" uid="uid://bvvg8cylgn0vm" path="res://assets/title_logo.png" id="2_eb3jk"]
+[ext_resource type="Theme" uid="uid://b0vo6jf1kqs44" path="res://button_font.tres" id="3_74wt4"]
+
+[node name="MainMenu" type="CenterContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_e2m2n")
+
+[node name="Contents" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="Title" type="TextureRect" parent="Contents"]
+texture_filter = 1
+custom_minimum_size = Vector2(800, 288)
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("2_eb3jk")
+expand_mode = 1
+
+[node name="Menu" type="VBoxContainer" parent="Contents"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="PlayButton" type="Button" parent="Contents/Menu"]
+texture_filter = 1
+custom_minimum_size = Vector2(216, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("3_74wt4")
+text = "Play Game"
+
+[node name="OptionsButton" type="Button" parent="Contents/Menu"]
+texture_filter = 1
+custom_minimum_size = Vector2(216, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("3_74wt4")
+text = "Options"
+
+[node name="CreditsButton" type="Button" parent="Contents/Menu"]
+texture_filter = 1
+custom_minimum_size = Vector2(156, 42)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("3_74wt4")
+text = "Credits"
+
+[connection signal="pressed" from="Contents/Menu/PlayButton" to="." method="_play_game"]
+[connection signal="pressed" from="Contents/Menu/OptionsButton" to="." method="_to_options"]
+[connection signal="pressed" from="Contents/Menu/CreditsButton" to="." method="_to_credits"]
