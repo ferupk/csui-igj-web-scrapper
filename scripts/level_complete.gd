@@ -6,10 +6,11 @@ var beat_objective = $CenterContainer/PanelContainer/MarginContainer/VBoxContain
 var par_objective = $CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Objectives/ParObjective
 @onready
 var bonus_objective = $CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Objectives/BonusObjective
+@onready var sfx = $SFX
 
 
 func _ready() -> void:
-	Engine.time_scale = 0
+	sfx.play()
 
 	par_objective.update_objective(
 		"Beat the level in " + str(LevelProgress.pickup_par) + " moves or less"
@@ -25,7 +26,6 @@ func _ready() -> void:
 
 
 func _to_level_select() -> void:
-	Engine.time_scale = 1
 	await GroundController.fade_in()
 	get_tree().call_deferred("change_scene_to_file", "res://scenes/level_select.tscn")
 	BGMController.change_music("menu")

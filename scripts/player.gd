@@ -10,6 +10,7 @@ const tile_size: int = 64
 @onready var sfx = {
 	"pick_up": $SFX/PickUp,
 	"drop": $SFX/Drop,
+	"step": $SFX/Step,
 }
 
 var moving = false
@@ -36,6 +37,9 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
+	if LevelProgress.level_end:
+		return
+
 	var collider = ray.get_collider()
 
 	if Input.is_action_just_pressed("player_action") and holding:
@@ -56,13 +60,19 @@ func _process(_delta: float) -> void:
 			collider.pick_up()
 			self.pick_up()
 
-	counter.text = str(hold_steps)
+	if holding and holding.dead:
+		counter.text = "X"
+		counter.set_modulate(Color(1, 0, 0))
+	else:
+		counter.text = str(hold_steps)
+		counter.set_modulate(Color(1, 1, 1))
+
 	direction_guide.position = ray.target_position / 2
 	direction_guide.rotation = ray.target_position.angle()
 
 
 func _unhandled_input(event):
-	if moving:
+	if moving or LevelProgress.level_end:
 		return
 	for dir in inputs.keys():
 		if event.is_action_pressed(dir):
@@ -89,6 +99,7 @@ func move(dir):
 		)
 
 		moving = true
+		sfx.step.play()
 		await tween.finished
 		moving = false
 

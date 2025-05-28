@@ -11,3 +11,11 @@ func _ready() -> void:
 	LevelProgress.packet_count = packet_count
 	LevelProgress.pickup_limit = pickup_limit
 	LevelProgress.pickup_par = pickup_par
+
+
+func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("restart") and !LevelProgress.level_end:
+		LevelProgress.end_level()
+		await GroundController.fade_in()
+		get_tree().call_deferred("reload_current_scene")
+		GroundController.fade_out()

@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://d3roe3tmg4g5o"]
+[gd_scene load_steps=7 format=3 uid="uid://d3roe3tmg4g5o"]
 
 [ext_resource type="Script" path="res://scripts/level_complete.gd" id="1_k50rm"]
 [ext_resource type="FontFile" uid="uid://bhb13frq7x54n" path="res://assets/fonts/EuropeanTeletext.ttf" id="2_i0cbj"]
 [ext_resource type="PackedScene" uid="uid://cj7002sqxufld" path="res://scenes/objective_checkbox.tscn" id="2_ktckl"]
 [ext_resource type="Theme" uid="uid://b0vo6jf1kqs44" path="res://button_font.tres" id="4_5vwl0"]
+[ext_resource type="AudioStream" uid="uid://cp0ojxxcovgpw" path="res://assets/sounds/level_win.wav" id="5_rbuxu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7ifp5"]
 bg_color = Color(0.0745098, 0.529412, 0, 1)
@@ -71,5 +72,9 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("4_5vwl0")
 text = "Done"
+
+[node name="SFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_rbuxu")
+volume_db = 6.0
 
 [connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/DoneButton" to="." method="_to_level_select"]

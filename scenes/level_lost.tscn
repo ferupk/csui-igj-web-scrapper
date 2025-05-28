@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://d3gtnxf2m1aff"]
+[gd_scene load_steps=6 format=3 uid="uid://d3gtnxf2m1aff"]
 
 [ext_resource type="Script" path="res://scripts/level_lost.gd" id="1_j17qn"]
 [ext_resource type="FontFile" uid="uid://bhb13frq7x54n" path="res://assets/fonts/EuropeanTeletext.ttf" id="2_ooyb5"]
 [ext_resource type="Theme" uid="uid://b0vo6jf1kqs44" path="res://button_font.tres" id="4_0kc8x"]
+[ext_resource type="AudioStream" uid="uid://fhtujjjoawxc" path="res://assets/sounds/level_lose.wav" id="4_ji4gv"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7ifp5"]
 bg_color = Color(0.0745098, 0.529412, 0, 1)
@@ -66,6 +67,11 @@ size_flags_horizontal = 4
 theme = ExtResource("4_0kc8x")
 text = "Quit
 "
+
+[node name="SFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_ji4gv")
+volume_db = -6.0
+bus = &"Music"
 
 [connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/RetryButton" to="." method="_retry_level"]
 [connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/QuitButton" to="." method="_to_level_select"]
