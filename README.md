@@ -16,6 +16,9 @@ Game is now downloadable at https://jklmeno.itch.io/web-scrapper.
 - ItemPickup.wav by nicholasdaryl — https://freesound.org/people/nicholasdaryl/sounds/563465/
 - Firewood Drop 5 by Frostnox — https://freesound.org/people/Frostnox/sounds/796643/
 - Nom Noise by TheDragonsSpark — https://freesound.org/people/TheDragonsSpark/sounds/543386/
+- Retro, Footstep.wav by LilMati — https://freesound.org/people/LilMati/sounds/515783/
+- Acquire by Kenneth_Cooney — https://freesound.org/people/Kenneth_Cooney/sounds/781199/
+- Retro video game sfx - Fail by OwlStorm — https://freesound.org/people/OwlStorm/sounds/404743/
 
 ### Music
 
