@@ -19,3 +19,11 @@ func _process(_delta: float) -> void:
 		await GroundController.fade_in()
 		get_tree().call_deferred("reload_current_scene")
 		GroundController.fade_out()
+
+	if Input.is_action_just_pressed("quit_level") and !LevelProgress.level_end:
+		LevelProgress.end_level()
+		await GroundController.fade_in()
+		get_tree().call_deferred("change_scene_to_file", "res://scenes/level_select.tscn")
+		BGMController.change_music("menu")
+		GroundController.toggle_background(true)
+		GroundController.fade_out()
