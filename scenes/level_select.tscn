@@ -39,6 +39,11 @@ columns = 3
 [node name="Level1" parent="Contents/Selection/Levels" instance=ExtResource("4_l8isn")]
 layout_mode = 2
 
+[node name="Level2" parent="Contents/Selection/Levels" instance=ExtResource("4_l8isn")]
+layout_mode = 2
+text = "2"
+level = "level_2"
+
 [node name="BackButton" type="Button" parent="Contents"]
 texture_filter = 1
 custom_minimum_size = Vector2(256, 54)

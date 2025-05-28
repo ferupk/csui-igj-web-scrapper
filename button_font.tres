@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=7 format=3 uid="uid://b0vo6jf1kqs44"]
 
-[ext_resource type="FontFile" uid="uid://bhb13frq7x54n" path="res://assets/fonts/EuropeanTeletext.ttf" id="1_ndxhg"]
+[ext_resource type="FontFile" uid="uid://bhb13frq7x54n" path="res://assets/fonts/EuropeanTeletext.ttf" id="1_fk1n6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ug2ag"]
 content_margin_left = 4.0
@@ -86,7 +86,6 @@ corner_radius_bottom_left = 3
 corner_detail = 5
 
 [resource]
-default_font = ExtResource("1_ndxhg")
 Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
 Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
 Button/colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
@@ -105,7 +104,7 @@ Button/constants/h_separation = 4
 Button/constants/icon_max_width = 0
 Button/constants/outline_size = 0
 Button/font_sizes/font_size = 24
-Button/fonts/font = ExtResource("1_ndxhg")
+Button/fonts/font = ExtResource("1_fk1n6")
 Button/styles/disabled = SubResource("StyleBoxFlat_ug2ag")
 Button/styles/focus = SubResource("StyleBoxFlat_x80nk")
 Button/styles/hover = SubResource("StyleBoxFlat_2k0kf")
